@@ -17,7 +17,7 @@ DEVICE_ID = 'pi_b'
 
 # Control thresholds
 TEMP_THRESHOLD_HIGH = 28  # Turn on fan above this
-TEMP_THRESHOLD_LOW = 25   # Turn off fan below this
+# TEMP_THRESHOLD_LOW = 25   # Turn off fan below this
 LIGHT_THRESHOLD = 200     # Below this is considered dark
 
 # Setup logging
@@ -119,7 +119,7 @@ class ActuatorController:
         # Fan control based on temperature
         if temp > TEMP_THRESHOLD_HIGH and not self.current_state['fan']:
             self.control_fan(True)
-        elif temp < TEMP_THRESHOLD_LOW and self.current_state['fan']:
+        else:
             self.control_fan(False)
         
         # LED status indication
