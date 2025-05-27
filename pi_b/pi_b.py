@@ -7,7 +7,7 @@ from threading import Thread, Lock
 import queue
 
 # Configuration
-SERIAL_PORT = '/dev/ttyUSB0'  # Adjust if needed
+SERIAL_PORT = '/dev/ttyACM0'  # Adjust if needed
 SERIAL_BAUD = 9600
 MQTT_BROKER = 'test.mosquitto.org'
 MQTT_PORT = 1883

@@ -29,6 +29,7 @@ void setup() {
   digitalWrite(FAN_RELAY_PIN, LOW);
   setLED(0, 0, 0);
   digitalWrite(BUZZER_PIN, LOW);
+
   
   Serial.println("ACTUATOR_NODE_READY");
 }
