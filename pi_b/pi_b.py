@@ -251,3 +251,4 @@ class ActuatorController:
 
 if __name__ == "__main__":
     controller = ActuatorController()
+    controller.run()
