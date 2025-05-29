@@ -12,9 +12,14 @@ import asyncio
 from datetime import datetime
 import logging
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  
+
 # Configuration
-DISCORD_TOKEN = 'MTM3NzMzMDU1OTAwNDcwOTAwNA.GhROgA.b-0WMpcPDiz3c8jEiqDYw96A5EgMKdsK9G82Fk'  # Replace with your bot token
-ALERT_CHANNEL_ID = 1377333528479535116  # Replace with your channel ID
+DISCORD_TOKEN = os.getenv('MTM3NzMzMDU1OTAwNDcwOTAwNA.GhROgA.b-0WMpcPDiz3c8jEiqDYw96A5EgMKdsK9G82Fk')  # Replace with your bot token
+ALERT_CHANNEL_ID = int(os.getenv(1377333528479535116))  # Replace with your channel ID
 
 # MQTT Configuration
 MQTT_BROKER = 'test.mosquitto.org'
