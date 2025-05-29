@@ -4,6 +4,8 @@ import time
 import paho.mqtt.client as mqtt
 import logging
 from datetime import datetime
+# Import custom Discord alert function
+from discord_alert import send_discord_alert
 
 # Configuration
 SERIAL_PORT = '/dev/ttyUSB0'  # Adjust if needed (could be /dev/ttyACM0)
@@ -135,12 +137,15 @@ class SensorGateway:
         # Temperature alerts
         if data['temp'] > 30:
             alerts.append({"type": "HIGH_TEMP", "value": data['temp']})
+            send_discord_alert(f"🔥 High temperature detected: {data['temp']}°C")
         elif data['temp'] < 10:
             alerts.append({"type": "LOW_TEMP", "value": data['temp']})
+            send_discord_alert(f"❄️ Low temperature detected: {data['temp']}°C")
         
         # Motion in darkness alert
         if data['motion'] == 1 and data['light'] < 100:
             alerts.append({"type": "MOTION_IN_DARK", "light": data['light']})
+            send_discord_alert(f"🚨 Motion detected in darkness! Light level: {data['light']}")
         
         # Publish alerts
         for alert in alerts:
