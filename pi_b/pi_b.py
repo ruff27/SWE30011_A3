@@ -1,4 +1,4 @@
-# .env DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/1377333528479535116/MTM3NzMzMDU1OTAwNDcwOTAwNA.GjfpYq.lYE5m9xIHFNze-lsoag8NZuREOPSfeS5L9uHJk
+# .env DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/1377333528479535116/MTM3NzMzMDU1OTAwNDcwOTAwNA.Gwb0hO.3hUMIoeGlGOPdW461Ii8wJbabml8SixnEOXGxY
 
 import serial
 import json
