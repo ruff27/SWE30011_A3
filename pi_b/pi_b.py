@@ -1,5 +1,4 @@
-# .env DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/1377333528479535116/MTM3NzMzMDU1OTAwNDcwOTAwNA.GhROgA.b-0WMpcPDiz3c8jEiqDYw96A5EgMKdsK9G82Fk
-
+# .env https://discord.com/api/webhooks/1377490524381904936/gqIpuKQsjOPrtyp10IAgufPydZegww6D3HgWedCz_ptWoIBT3anU6j1gye2KvShnJhMz
 import serial
 import json
 import time
