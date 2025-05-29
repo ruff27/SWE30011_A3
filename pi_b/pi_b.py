@@ -1,3 +1,5 @@
+# .env DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/1377333528479535116/MTM3NzMzMDU1OTAwNDcwOTAwNA.GjfpYq.lYE5m9xIHFNze-lsoag8NZuREOPSfeS5L9uHJk
+
 import serial
 import json
 import time
@@ -5,6 +7,8 @@ import paho.mqtt.client as mqtt
 import logging
 from threading import Thread, Lock
 import queue
+from discord_alert import send_discord_alert
+
 
 # Configuration
 SERIAL_PORT = '/dev/ttyACM0'  # Adjust if needed
@@ -141,7 +145,8 @@ class ActuatorController:
             # Activate buzzer for security alert
             self.control_buzzer(True)
             self.control_led(255, 0, 255)  # Purple for alert
-            logger.warning("Security alert: Motion detected in darkness!")
+            msg = f"🚨 Motion detected in darkness! Light level: {alert.get('light')}"
+            send_discord_alert(msg)
         
         elif alert_type == 'HIGH_TEMP':
             # Flash red LED
@@ -150,6 +155,8 @@ class ActuatorController:
                 time.sleep(0.5)
                 self.control_led(0, 0, 0)
                 time.sleep(0.5)
+            msg = f"🔥 High temperature alert! Temp: {alert.get('value')}°C"
+            send_discord_alert(msg)
     
     def handle_control_command(self, topic, payload):
         """Handle manual control commands via MQTT"""
