@@ -1,3 +1,4 @@
+// Sensor Node
 #include <DHT.h>
 
 // Pin definitions
