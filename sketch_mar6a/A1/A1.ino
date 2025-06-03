@@ -24,7 +24,6 @@ void setup() {
 }
 
 void loop() {
-  // Check if it's time to read sensors
   if (millis() - lastReadTime >= READ_INTERVAL) {
     lastReadTime = millis();
     

@@ -8,16 +8,16 @@ from datetime import datetime
 from discord_alert import send_discord_alert
 
 # Configuration
-SERIAL_PORT = '/dev/ttyUSB0'  # Adjust if needed (could be /dev/ttyACM0)
+SERIAL_PORT = '/dev/ttyACM0'
 SERIAL_BAUD = 9600
 MQTT_BROKER = 'test.mosquitto.org'  # Public broker for testing
 MQTT_PORT = 1883
 MQTT_TOPIC_PREFIX = 'seaas/sensors'
 DEVICE_ID = 'pi_a'
 
-# Thingsboard configuration (optional)
-THINGSBOARD_HOST = 'demo.thingsboard.io'  # Replace with your instance
-THINGSBOARD_TOKEN = 'YOUR_DEVICE_TOKEN'   # Replace with actual token
+# Thingsboard configuration
+THINGSBOARD_HOST = 'demo.thingsboard.io' 
+THINGSBOARD_TOKEN = 'IoT_A3' 
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -27,14 +27,14 @@ class SensorGateway:
     def __init__(self):
         self.serial_conn = None
         self.mqtt_client = None
-        self.tb_client = None  # Thingsboard client
+        self.tb_client = None 
         self.last_data = {}
         
     def setup_serial(self):
         """Initialize serial connection to Arduino"""
         try:
             self.serial_conn = serial.Serial(SERIAL_PORT, SERIAL_BAUD, timeout=1)
-            time.sleep(2)  # Wait for Arduino reset
+            time.sleep(2) 
             logger.info(f"Serial connection established on {SERIAL_PORT}")
             return True
         except Exception as e:
@@ -52,7 +52,7 @@ class SensorGateway:
             self.mqtt_client.connect(MQTT_BROKER, MQTT_PORT, 60)
             self.mqtt_client.loop_start()
             
-            # Setup Thingsboard connection (optional)
+            # Setup Thingsboard connection
             self.tb_client = mqtt.Client()
             self.tb_client.username_pw_set(THINGSBOARD_TOKEN)
             try:
@@ -87,7 +87,6 @@ class SensorGateway:
                 line = self.serial_conn.readline().decode('utf-8').strip()
                 
                 if line.startswith('{') and line.endswith('}'):
-                    # Parse JSON data
                     data = json.loads(line)
                     self.last_data = data
                     self.process_sensor_data(data)

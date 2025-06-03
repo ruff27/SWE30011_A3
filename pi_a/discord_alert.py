@@ -1,4 +1,3 @@
-# discord_alert.py
 import requests
 
 DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1377526074904150107/yTBKYWDt2PI2YTqzAW_K_iNHIN0FiMeIfY73w49OtlfdiwBkbKOujGGyagYfyRfom0Y_"

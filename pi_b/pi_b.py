@@ -7,7 +7,7 @@ from threading import Thread, Lock
 import queue
 
 # Configuration
-SERIAL_PORT = '/dev/ttyACM0'  # Adjust if needed
+SERIAL_PORT = '/dev/ttyACM0' 
 SERIAL_BAUD = 9600
 MQTT_BROKER = 'test.mosquitto.org'
 MQTT_PORT = 1883
@@ -17,7 +17,6 @@ DEVICE_ID = 'pi_b'
 
 # Control thresholds
 TEMP_THRESHOLD_HIGH = 25  # Turn on fan above this
-# TEMP_THRESHOLD_LOW = 25   # Turn off fan below this
 LIGHT_THRESHOLD = 200     # Below this is considered dark
 
 # Setup logging

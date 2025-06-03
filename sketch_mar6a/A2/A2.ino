@@ -35,14 +35,12 @@ void setup() {
 }
 
 void loop() {
-  // Check for serial commands
   if (Serial.available() > 0) {
     String command = Serial.readStringUntil('\n');
     command.trim();
     processCommand(command);
   }
   
-  // Handle buzzer auto-off
   if (buzzerActive && (millis() - buzzerStartTime > BUZZER_DURATION)) {
     digitalWrite(BUZZER_PIN, LOW);
     buzzerActive = false;
